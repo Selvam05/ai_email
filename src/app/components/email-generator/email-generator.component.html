@@ -1,0 +1,319 @@
+<div class="container py-5">
+
+  <!-- TITLE -->
+  <div class="text-center mb-5">
+
+    <h1 class="gradient-text">
+      AI Email Generator
+    </h1>
+
+    <p class="subtitle">
+      Generate professional email templates instantly using AI
+    </p>
+
+  </div>
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+      <!-- MAIN CARD -->
+      <div class="main-card">
+
+        <!-- TOP -->
+        <div class="card-top">
+
+          <h2 class="mb-2">
+            Create Smart Emails
+          </h2>
+
+          <p class="mb-0">
+            Fast • Professional • Interactive
+          </p>
+
+        </div>
+
+        <!-- BODY -->
+        <div class="card-body">
+
+          <form
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()"
+          >
+
+            <!-- RECIPIENT -->
+            <div class="mb-4">
+
+              <label class="form-label">
+                Recipient Name
+              </label>
+
+              <div class="input-group">
+
+                <span class="input-group-text">
+                  <i class="bi bi-person"></i>
+                </span>
+
+                <input
+                  type="text"
+                  class="form-control custom-input"
+                  formControlName="recipientName"
+                  placeholder="Enter recipient name"
+                />
+
+              </div>
+
+            </div>
+
+            <!-- PURPOSE -->
+            <div class="mb-4">
+
+              <label class="form-label">
+                Email Purpose
+              </label>
+
+              <div class="input-group">
+
+                <span class="input-group-text">
+                  <i class="bi bi-pencil-square"></i>
+                </span>
+
+                <input
+                  type="text"
+                  class="form-control custom-input"
+                  formControlName="purpose"
+                  placeholder="Example: Leave Request"
+                />
+
+              </div>
+
+            </div>
+
+            <!-- TONE -->
+            <div class="mb-4">
+
+              <label class="form-label">
+                Tone Style
+              </label>
+
+              <div class="input-group">
+
+                <span class="input-group-text">
+                  <i class="bi bi-stars"></i>
+                </span>
+
+                <select
+                  class="form-select custom-input"
+                  formControlName="tone"
+                >
+
+                  <option
+                    *ngFor="let t of tones"
+                    [value]="t"
+                  >
+                    {{ t }}
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- NOTES -->
+            <div class="mb-4">
+
+              <label class="form-label">
+                Additional Notes
+              </label>
+
+              <div class="input-group textarea-group">
+
+                <textarea
+                  rows="5"
+                  class="form-control custom-input"
+                  formControlName="notes"
+                  placeholder="Type additional details..."
+                ></textarea>
+
+              </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button
+              type="submit"
+              class="generate-btn w-100"
+              [disabled]="form.invalid || loading()"
+            >
+
+              <span
+                *ngIf="loading()"
+                class="spinner-border spinner-border-sm me-2"
+              ></span>
+
+              ✨
+              {{ loading() ? 'Generating...' : 'Generate Email' }}
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+      <!-- GENERATED CARD -->
+      <div
+        *ngIf="generatedEmail()"
+        class="generated-card"
+        (click)="openPopup()"
+      >
+
+        <!-- HEADER -->
+        <div class="generated-header">
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+
+              <h3 class="generated-title">
+                ✨ Generated Email
+              </h3>
+
+              <p class="generated-subtitle">
+                Click to preview full email
+              </p>
+
+            </div>
+
+            <div class="arrow-icon">
+              →
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- BODY -->
+        <div class="generated-body">
+
+          <div class="top-badge">
+            {{ form.value.tone }}
+          </div>
+
+          <div class="email-preview-text">
+
+            {{ generatedEmail().slice(0, 150) }}...
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div
+  class="result-modal"
+  *ngIf="showModal()"
+>
+
+  <div class="modal-card">
+
+    <!-- HEADER -->
+    <div class="modal-header-custom">
+
+      <div>
+
+        <h2 class="text-white mb-2">
+          ✨ AI Generated Email
+        </h2>
+
+        <p class="text-light mb-0">
+          Professional Email Template
+        </p>
+
+      </div>
+
+      <button
+        class="close-btn"
+        (click)="closePopup()"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <!-- BODY -->
+    <div class="modal-body-custom">
+
+      <div class="email-box">
+
+        <div class="top-badge mb-4">
+          {{ form.value.tone }}
+        </div>
+
+        <textarea
+          class="email-textarea"
+          rows="16"
+          readonly
+        >{{ generatedEmail() }}</textarea>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="modal-footer-custom">
+
+      <button
+        class="action-btn close-action"
+        (click)="closePopup()"
+      >
+        Close
+      </button>
+
+      <button
+        class="action-btn copy-btn"
+        (click)="copyToClipboard()"
+      >
+        Copy Email
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ERROR -->
+<div
+  *ngIf="error()"
+  class="toast-container position-fixed top-0 end-0 p-3"
+>
+
+  <div class="toast show text-bg-danger border-0">
+
+    <div class="d-flex">
+
+      <div class="toast-body">
+        {{ error() }}
+      </div>
+
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        (click)="clearError()"
+      ></button>
+
+    </div>
+
+  </div>
+
+</div>

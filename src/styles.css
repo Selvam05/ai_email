@@ -1,0 +1,286 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #7c3aed 0%, transparent 30%),
+    radial-gradient(circle at bottom right, #2563eb 0%, transparent 30%),
+    #0f172a;
+  padding: 40px 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* TITLE */
+.gradient-text {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+}
+
+/* SUBTITLE */
+.subtitle {
+  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+}
+
+/* MAIN CARD */
+.main-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+}
+
+/* HEADER */
+.card-top {
+  padding: 35px;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #2563eb
+    );
+  color: white;
+}
+
+/* FORM AREA */
+.card-body {
+  padding: 35px;
+}
+
+/* LABEL */
+.form-label {
+  color: white;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* INPUT GROUP */
+.input-group {
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ICON */
+.input-group-text {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.8);
+  padding-left: 18px;
+}
+
+/* INPUT */
+.custom-input {
+  background: transparent !important;
+  border: none !important;
+  color: white !important;
+  height: 58px;
+  font-size: 15px;
+  box-shadow: none !important;
+}
+
+.custom-input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+/* TEXTAREA */
+textarea.custom-input {
+  height: auto;
+  padding-top: 14px;
+}
+
+/* SELECT */
+select.custom-input option {
+  color: black;
+}
+
+/* BUTTON */
+.generate-btn {
+  height: 60px;
+  border: none;
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #2563eb
+    );
+
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.generate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 30px rgba(124,58,237,0.4);
+}
+
+/* GENERATED CARD */
+.generated-card {
+  margin-top: 30px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.generated-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.3);
+}
+
+.generated-header {
+  padding: 24px;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #2563eb
+    );
+
+  color: white;
+}
+
+.generated-body {
+  padding: 24px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+}
+
+/* MODAL */
+.result-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+/* MODAL CARD */
+.modal-card {
+  width: 100%;
+  max-width: 850px;
+  background:
+    linear-gradient(
+      145deg,
+      #111827,
+      #1e293b
+    );
+
+  border-radius: 28px;
+  overflow: hidden;
+  animation: popup 0.3s ease;
+}
+
+/* MODAL HEADER */
+.modal-header-custom {
+  padding: 28px;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #2563eb
+    );
+
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CLOSE BTN */
+.close-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+/* MODAL BODY */
+.modal-body-custom {
+  padding: 30px;
+}
+
+/* EMAIL BOX */
+.email-box {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 24px;
+  color: white;
+}
+
+/* TEXTAREA */
+.email-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  color: white;
+  line-height: 1.8;
+}
+
+/* FOOTER */
+.modal-footer-custom {
+  padding: 0 30px 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ACTION BUTTONS */
+.action-btn {
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+}
+
+.copy-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #10b981,
+      #059669
+    );
+
+  color: white;
+}
+
+.close-action {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+
+  .gradient-text {
+    font-size: 2.2rem;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+}
